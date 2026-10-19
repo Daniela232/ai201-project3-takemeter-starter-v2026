@@ -54,33 +54,41 @@
      The decision rule is worth a point on its own and it's the thing most
      people leave out. Every taxonomy has a hardest boundary. Name yours. -->
 
-### `label_one`
+### `evidenced`
 
-**Definition:**
-
-**Example 1:**
->
-
-**Example 2:**
->
-
-### `label_two`
-
-**Definition:**
+**Definition:** Makes a claim about a case backed by a specific, checkable fact -- a date, a name, a legal outcome, or a cited source like a podcast or book.
 
 **Example 1:**
->
+> I had only heard about this case from licensed private investigator/advocate Heather Zielinski (formerly Cohen)... Swift a mother of 4 was reported missing on October 30, 2011 & her body was found less than a mile from her home six weeks later... Her husband David Swift was charged with First degree premeditated murder, his trial was in June 2024 in which he was found not guilty of first & second degree murder, the jury was deadlocked for voluntary manslaughter.
 
 **Example 2:**
->
+> Two little know serial killers that were never caught: the Frankford Slasher and the Toledo Clubber. In the Frankford area of Philly possibly nine women were stabbed between 1985 and 1990. There was a really good suspect, but he moved away at the end of the period and another man was arrested and then later acquitted for one of the murders.
+
+### `speculation`
+
+**Definition:** A confident claim or theory about a case with no supporting fact or source offered.
+
+**Example 1:**
+> Jelani Day. I fully believe there was foul play involved.
+
+**Example 2:**
+> You guys should look up the Gary Wayne Sutton case in Tennessee. He's on death row, but there's a bunch of people who think he's innocent.
+
+### `reaction`
+
+**Definition:** A purely emotional response to a case, with no claim or argument being made at all.
+
+**Example 1:**
+> Israel Keyes is living rent free in my head. Normally I'm not into serial killers, but that one gives me the heebie jeebies in a really intense way.
+
+**Example 2:**
+> Heard many cases over the years different Podcasts but the case of Lauren Agee still makes my blood boil.
 
 ### The hardest boundary
 
-**Which two labels:**
+**Which two labels:** `evidenced` and `reaction`
 
-**The decision rule I used every time:**
-<!-- e.g. "If the post names a specific checkable fact, it's `analysis`, even
-     if the tone is heated." -->
+**The decision rule I used every time:** If the post contains a specific checkable fact about the case (a date, a name, a location, a legal detail), it's `evidenced`, even if it also contains emotional language or a feeling by the end. The factual content takes priority over tone. For example, one comment about Geoffrey Spangler's disappearance gives exact dates, named locations, and a named podcast source, then ends with "I felt so sad for her. I can't imagine the not knowing" -- that comment is `evidenced`, not `reaction`, because the fact content came first and the feeling was incidental to it.
 
 
 
