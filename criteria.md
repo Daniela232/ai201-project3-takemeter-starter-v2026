@@ -51,61 +51,51 @@ whether you hit them:
 
 ---
 
-## 1.
+## 1. Overall accuracy
 
-<!-- Your criterion. It must name a number. -->
+Overall accuracy on the held-out test set is at least 0.65.
 
-
-
-**Why this target:**
+**Why this target:** Three labels means a coin-flip guesser gets about 33%, so 0.65 is meaningfully better than chance while still realistic for a model fine-tuned on roughly 200 hand-labeled examples, not thousands.
 
 
 
 ---
 
-## 2.
+## 2. Per-label performance
 
-<!-- Your criterion. -->
+Every label has an F1 of at least 0.55 on the held-out test set.
 
-
-
-**Why this target:**
+**Why this target:** I expect `reaction` to be my smallest, noisiest label, since short reaction comments showed up less often in my reading than detailed case write-ups. I set this looser than the overall accuracy target to account for that label's jumpier score with fewer test examples.
 
 
 
 ---
 
-## 3.
+## 3. Balance
 
-<!-- Your criterion. -->
+No label makes up more than 60% of my 200 labeled examples.
 
-
-
-**Why this target:**
+**Why this target:** The assignment's hard cap is 70%, but `evidenced` is likely to dominate naturally since r/TrueCrime comments skew toward detailed case recaps. Capping it at 60% forces me to genuinely collect enough `speculation` and `reaction` examples instead of letting one label coast to the edge of the limit.
 
 
 
 ---
 
-## 4.
+## 4. Consistency
 
-<!-- Your criterion. -->
+I agree with the staff labels on at least 70% (14 of 20) of the cold-labeled posts.
 
-
-
-**Why this target:**
+**Why this target:** The hardest boundary in my taxonomy is `evidenced` vs. `reaction`, since a comment can carry both a fact and a feeling at once. I expect real disagreement with staff on exactly that boundary, so 70% is clearly better than chance (33%) without pretending my boundary is cleaner than it actually is.
 
 
 
 ---
 
-## 5.
+## 5. Confidence
 
-<!-- Your criterion. -->
+Predictions where the model's confidence is above 0.8 are correct at least 80% of the time.
 
-
-
-**Why this target:**
+**Why this target:** If the model's confident predictions aren't noticeably more accurate than its overall average (0.65), the confidence scores would be meaningless noise rather than something a user could actually trust.
 
 
 
