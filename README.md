@@ -39,8 +39,7 @@
 
 ## What This Does
 
-<!-- Your community, and what your classifier sorts posts into. Three or four
-     sentences. -->
+This project uses public comments collected from r/TrueCrime. It trains a text classifier to sort each comment into one of three categories: `evidenced`, `speculation`, or `reaction`. The goal is to distinguish fact-supported discussion from unsupported theories and purely emotional responses. The model was trained locally on 200 labeled comments.
 
 
 
@@ -99,61 +98,75 @@
 <!-- Where you collected from, how you labelled, your counts, and three hard
      cases. -->
 
-**Where the posts came from:**
+**Where the posts came from:** I collected 200 public comments from r/TrueCrime. The comments discuss different cases, legal outcomes, investigations, theories, and emotional reactions.
 
-**How I labelled them:** <!-- Cold first? Pre-labelled with AI and corrected?
-Say so plainly — the disclosure is required, not penalised. -->
+**How I labelled them:** I labeled the first 20 comments cold, without AI assistance, and marked them `cold` in the note column. An AI tool pre-labeled the remaining 180 comments using my definitions. I personally reviewed every pre-labeled comment before marking it `reviewed`.
 
 **Counts per label:**
 
 | Label | Count | Share |
-|---|---|---|
-|  |  |  |
-|  |  |  |
-|  |  |  |
-| **Total** |  | 100% |
+|---|---:|---:|
+| `evidenced` | 79 | 39.5% |
+| `reaction` | 76 | 38.0% |
+| `speculation` | 45 | 22.5% |
+| **Total** | **200** | **100%** |
 
 **Three hard cases**
 
-<!-- Any post that made you pause: what it was, which two labels it could have
-     been, and what you chose. These are worth more than the easy 190. -->
-
 **1.**
-> *The post:*
+> *The post:* “Great write up! I believe he was married, but he had a pregnant girlfriend that he strung along for years. Just an all around creep.”
 >
-> *Could have been:*
+> *Could have been:* `evidenced` or `reaction`
 >
-> *I chose, because:*
+> *I chose, because:* I chose `evidenced` because the comment includes specific, checkable claims about the person’s marriage and pregnant girlfriend. The emotional judgment at the end does not erase the factual claims.
 
 **2.**
-> *The post:*
+> *The post:* “Has to be a cover up for someone in law enforcement. How does someone stab the back of their own head? Unbelievable.”
 >
-> *Could have been:*
+> *Could have been:* `speculation` or `reaction`
 >
-> *I chose, because:*
+> *I chose, because:* I chose `speculation` because the writer proposes an unsupported cover-up theory. “Unbelievable” is emotional, but the main purpose of the comment is to make a theory about the case.
 
 **3.**
-> *The post:*
+> *The post:* “I went to school with Deanna. We were on the same volleyball team for a few years. When this happened, it rocked our HS pretty hard.”
 >
-> *Could have been:*
+> *Could have been:* `evidenced` or `reaction`
 >
-> *I chose, because:*
-
+> *I chose, because:* I chose `evidenced` because the writer provides specific firsthand details about attending school and playing volleyball with Deanna. The emotional effect on the school is secondary to those checkable details.
 ---
 
 ## The Training Run
 
 <!-- Your starting model, your settings, and anything you changed and why. -->
 
-**Base model:**
+**Base model:** `distilbert-base-uncased`
 
-**Settings:** <!-- epochs, learning rate, batch size, seed -->
+**Settings:**
 
-**Anything I changed from the defaults, and why:**
+- Epochs: 3
+- Learning rate: 2e-5
+- Batch size: 16
+- Maximum length: 128 tokens
+- Seed: 42
+- Device: CPU
+- PyTorch version: 2.2.2
+- Training time: approximately 4 minutes and 9 seconds
 
-**Split sizes:** <!-- train / val / test, and per-label counts in the test
-split. If a label had fewer than about 8 in test, say so — it explains a lot
-of next unit's variance. -->
+**Anything I changed from the defaults, and why:** I did not change any training hyperparameters. I used the notebook’s default settings so the first result would be a consistent starting point.
+
+**Split sizes:**
+
+- Training set: 139 comments
+- Validation set: 31 comments
+- Test set: 30 comments
+
+| Label | Train | Validation | Test |
+|---|---:|---:|---:|
+| `evidenced` | 55 | 12 | 12 |
+| `speculation` | 31 | 7 | 7 |
+| `reaction` | 53 | 12 | 11 |
+
+The `speculation` label has only 7 examples in the test split. Its F1 score may therefore change substantially between seeds because each individual prediction has a large effect on the metric.
 
 
 
@@ -170,17 +183,17 @@ of next unit's variance. -->
 
 **Moment 1**
 
-- *What I asked for:*
-- *What came back:*
-- *What I changed:*
+- *What I asked for:* I gave the AI my three label definitions and asked it to pre-label the remaining 180 collected r/TrueCrime comments.
+- *What came back:* It returned one of the three labels for each comment based on whether the comment contained checkable evidence, an unsupported theory, or only an emotional reaction.
+- *What I changed:* I read every pre-labeled comment and checked it against my definitions and decision rule. After confirming the labels, I marked those rows as `reviewed` in the note column.
 
 **Moment 2**
 
-- *What I asked for:*
-- *What came back:*
-- *What I changed:*
+- *What I asked for:* I asked the AI to help troubleshoot errors that appeared when I ran the training notebook on my Intel Mac.
+- *What came back:* It identified compatibility conflicts between NumPy, PyTorch, pandas, and pyarrow.
+- *What I changed:* I installed compatible versions of NumPy 1.26.4, pandas 2.2.3, and pyarrow 17.0.0 inside the project’s virtual environment. I did not change the notebook’s training code or hyperparameters.
 
-**Pre-labelling disclosure:**
+**Pre-labelling disclosure:** An AI tool pre-labeled 180 of the 200 comments. I personally reviewed every AI-labeled row against my written taxonomy before marking it `reviewed`. The first 20 comments were labeled cold without AI assistance.
 
 <!-- ═══════════════════════ UNIT 6 — THE TEST ═══════════════════════
 
