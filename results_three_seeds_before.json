@@ -1,0 +1,164 @@
+[
+  {
+    "seed": 42,
+    "n_test": 30,
+    "accuracy": 0.5666666666666667,
+    "f1_macro": 0.41964285714285715,
+    "per_label": {
+      "evidenced": {
+        "precision": 0.55,
+        "recall": 0.9166666666666666,
+        "f1": 0.6875,
+        "support": 12
+      },
+      "speculation": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 7
+      },
+      "reaction": {
+        "precision": 0.6,
+        "recall": 0.5454545454545454,
+        "f1": 0.5714285714285714,
+        "support": 11
+      }
+    },
+    "confusion": {
+      "evidenced": {
+        "evidenced": 11,
+        "speculation": 0,
+        "reaction": 1
+      },
+      "speculation": {
+        "evidenced": 4,
+        "speculation": 0,
+        "reaction": 3
+      },
+      "reaction": {
+        "evidenced": 5,
+        "speculation": 0,
+        "reaction": 6
+      }
+    },
+    "confidence": {
+      "mean_when_right": 0.4478600323200226,
+      "mean_when_wrong": 0.40122467279434204,
+      "accuracy_most_confident_third": 0.9,
+      "accuracy_least_confident_third": 0.2,
+      "n_per_third": 10
+    },
+    "device": "cpu",
+    "device_name": "CPU",
+    "torch_version": "2.2.2",
+    "max_length": 128
+  },
+  {
+    "seed": 7,
+    "n_test": 30,
+    "accuracy": 0.5,
+    "f1_macro": 0.3715170278637771,
+    "per_label": {
+      "evidenced": {
+        "precision": 0.45454545454545453,
+        "recall": 0.8333333333333334,
+        "f1": 0.5882352941176471,
+        "support": 12
+      },
+      "speculation": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 7
+      },
+      "reaction": {
+        "precision": 0.625,
+        "recall": 0.45454545454545453,
+        "f1": 0.5263157894736842,
+        "support": 11
+      }
+    },
+    "confusion": {
+      "evidenced": {
+        "evidenced": 10,
+        "speculation": 0,
+        "reaction": 2
+      },
+      "speculation": {
+        "evidenced": 6,
+        "speculation": 0,
+        "reaction": 1
+      },
+      "reaction": {
+        "evidenced": 6,
+        "speculation": 0,
+        "reaction": 5
+      }
+    },
+    "confidence": {
+      "mean_when_right": 0.43176594376564026,
+      "mean_when_wrong": 0.3895827531814575,
+      "accuracy_most_confident_third": 0.9,
+      "accuracy_least_confident_third": 0.4,
+      "n_per_third": 10
+    },
+    "device": "cpu",
+    "device_name": "CPU",
+    "torch_version": "2.2.2",
+    "max_length": 128
+  },
+  {
+    "seed": 2024,
+    "n_test": 30,
+    "accuracy": 0.6333333333333333,
+    "f1_macro": 0.47988505747126436,
+    "per_label": {
+      "evidenced": {
+        "precision": 0.75,
+        "recall": 0.75,
+        "f1": 0.75,
+        "support": 12
+      },
+      "speculation": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 7
+      },
+      "reaction": {
+        "precision": 0.5555555555555556,
+        "recall": 0.9090909090909091,
+        "f1": 0.6896551724137931,
+        "support": 11
+      }
+    },
+    "confusion": {
+      "evidenced": {
+        "evidenced": 9,
+        "speculation": 0,
+        "reaction": 3
+      },
+      "speculation": {
+        "evidenced": 2,
+        "speculation": 0,
+        "reaction": 5
+      },
+      "reaction": {
+        "evidenced": 1,
+        "speculation": 0,
+        "reaction": 10
+      }
+    },
+    "confidence": {
+      "mean_when_right": 0.4506062865257263,
+      "mean_when_wrong": 0.3932543694972992,
+      "accuracy_most_confident_third": 0.9,
+      "accuracy_least_confident_third": 0.4,
+      "n_per_third": 10
+    },
+    "device": "cpu",
+    "device_name": "CPU",
+    "torch_version": "2.2.2",
+    "max_length": 128
+  }
+]
