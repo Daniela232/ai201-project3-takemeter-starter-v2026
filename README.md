@@ -208,22 +208,20 @@ The `speculation` label has only 7 examples in the test split. Its F1 score may 
      prints this table for you. -->
 
 | Measure | Baseline | Trained | Difference |
-|---|---|---|---|
-| Overall accuracy |  |  |  |
-| Macro F1 |  |  |  |
-| F1 — `label_one` |  |  |  |
-| F1 — `label_two` |  |  |  |
+|---|---:|---:|---:|
+| Overall accuracy | 0.400 | 0.567 | +0.167 |
+| Macro F1 | 0.255 | 0.420 | +0.165 |
+| F1 — `evidenced` | 0.564 | 0.688 | +0.123 |
+| F1 — `reaction` | 0.000 | 0.571 | +0.571 |
+| F1 — `speculation` | 0.200 | 0.000 | -0.200 |
 
 **What I predicted before I looked:**
-<!-- Milestone 1 asks you to write this BEFORE seeing the trained numbers. A
-     prediction made afterwards isn't one. -->
 
-     I predict that my trained model will have higher overall accuracy than the baseline because it learned from comments labeled under my specific taxonomy. I expect the trained model to perform best on `evidenced` and `reaction`, but it may struggle with `speculation` because that label has the fewest examples.
+I predicted that my trained model would have higher overall accuracy than the baseline because it learned from comments labeled under my specific taxonomy. I expected it to perform best on `evidenced` and `reaction`, while struggling with `speculation` because that label had the fewest examples.
 
 **What the gap actually means:**
-<!-- If the baseline matched your trained model, your fine-tuning added
-     nothing — and that is a real finding, not a failure. Say it plainly. -->
 
+The trained model improved overall accuracy by 0.167 and macro F1 by 0.165, so fine-tuning added useful learning. The largest improvement was on `reaction`, but the trained model failed to identify `speculation`, showing that it did not learn that label’s boundary well.
 
 
 ---
