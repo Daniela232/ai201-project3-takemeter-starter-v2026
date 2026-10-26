@@ -1,0 +1,184 @@
+{
+  "model": "facebook/bart-large-mnli",
+  "n": 30,
+  "seed": 42,
+  "held_out": true,
+  "used_definitions": true,
+  "scores": {
+    "n": 30,
+    "accuracy": 0.4,
+    "f1_macro": 0.2547008547008547,
+    "per_label": {
+      "evidenced": {
+        "precision": 0.4074074074074074,
+        "recall": 0.9166666666666666,
+        "f1": 0.5641025641025641,
+        "support": 12
+      },
+      "reaction": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 11
+      },
+      "speculation": {
+        "precision": 0.3333333333333333,
+        "recall": 0.14285714285714285,
+        "f1": 0.2,
+        "support": 7
+      }
+    }
+  },
+  "predictions": [
+    {
+      "text": "My SO went to Harvard Westlake and lived in the area during the same time period. I will ask him if he knew her at all.",
+      "gold": "evidenced",
+      "predicted": "evidenced"
+    },
+    {
+      "text": "first time I see true crime on front page of wikipedia \ud83d\udc40",
+      "gold": "reaction",
+      "predicted": "evidenced"
+    },
+    {
+      "text": "Cheryle Gossett was a 48 year old African American woman who was unemployed and lived alone with her adult sons in the southwest Los Angeles area. Very little information was released about this case. She was reported missing on November 28th 1992, last spotted driving a 1973 2 door Toyota Celica. She reportedly left the house at 10 AM that morning. One of her arms washed up on the beach on December 7th 1992. The other arm washed up on December 8th near Marina Del Ray. These beaches are only roughly ten minutes apart. LAPD and the coast guard called off their search for Gossett's body at the end of December. Only one searchable news article can be found about the case online in a Google Search. According to Newspapers.com, no mention of Gossett's murder is mentioned beyond December 1992. The articles are attached here. https://www.latimes.com/archives/la-xpm-1992-12-21-me-1838-story.html Posting here in hopes there can be some renewed interest in the case. So many unanswered questions. Was Gossett married? What became of her sons? Was her car ever found? Were the rest of her remains discovered and why was she murdered?",
+      "gold": "evidenced",
+      "predicted": "speculation"
+    },
+    {
+      "text": "I smell a big donation to the Police Benevolent Association!",
+      "gold": "speculation",
+      "predicted": "evidenced"
+    },
+    {
+      "text": "Lack of skills. Detectives, at least in America, come from being cops. They\u2019re not like recruited for their skills or capabilities. If you\u2019re a cop that can pass the test you can become one",
+      "gold": "speculation",
+      "predicted": "evidenced"
+    },
+    {
+      "text": "I just listened to a podcast last night about a gentleman named Joseph Smedley who was a student at the University of Indiana and his very mysterious death (which the coroner listed as a suicide) which, as we know, is the death knell for any future investigation. The police wouldn't even give the family or any of their hired experts the photographs from the crime scene to further investigate. I really don't understand them stifling this family from finding out answers. It doesn't seem like this kid committed suicide. Very frustrating. Some think that it's because the victim is a black male who pledged a mainly white fraternity (and made it to membership). But after his death they wanted to not have anything to do with him. They basically just said he wasn't a member of their fraternity and he was! \ud83e\udd26\u200d\u2640\ufe0f\ud83e\udd37\u200d\u2640\ufe0f",
+      "gold": "evidenced",
+      "predicted": "evidenced"
+    },
+    {
+      "text": "I know there are cases where the family does not want to accept that their loved one committed suicide, but this is not one of those cases. She didn\u2019t do this to herself.",
+      "gold": "speculation",
+      "predicted": "evidenced"
+    },
+    {
+      "text": "Blaming the victim? Really classy \ud83e\udd26\ud83c\udffc\u200d\u2640\ufe0f",
+      "gold": "reaction",
+      "predicted": "speculation"
+    },
+    {
+      "text": "I\u2019ve read on different subs that people believe she definitely committed suicide and they\u2019ve provided what they feel is evidence that it\u2019s possible. My take has always been - just because something is possible doesn\u2019t mean it\u2019s probable. I just can\u2019t buy this was a suicide. I don\u2019t care what medication she was on or how she was feeling. This screams homicide.",
+      "gold": "speculation",
+      "predicted": "speculation"
+    },
+    {
+      "text": "I would think that should be challenging in a majority nonwhite country....but I guess they figured out a way,",
+      "gold": "speculation",
+      "predicted": "evidenced"
+    },
+    {
+      "text": "I also think about Phoebe Handsjuk a lot: another young woman whose suspicious death was labeled as a suicide/misadventure, against all obvious evidence that foul play was involved. It's like the powers that be are just spitting in our faces: \"Of course this is a murder, but what are you peons going to do about it?\" It makes my blood boil. Phoebe's then-boyfriend also had another girlfriend who died ~ mysteriously ~ a few years later. Not that anyone's counting or anything.",
+      "gold": "evidenced",
+      "predicted": "evidenced"
+    },
+    {
+      "text": "Sadly that was the maximum possible sentence",
+      "gold": "evidenced",
+      "predicted": "evidenced"
+    },
+    {
+      "text": "What in the fucking fuck did I just read.",
+      "gold": "reaction",
+      "predicted": "evidenced"
+    },
+    {
+      "text": "What a pathetic sentence. He dugged her to a comatose state, facilitated potentially hundreds of men to rape her without a condom which infected her with 4 STIs and filmed and distributed the videos. He's linked to multiple stranger rapes (some proven) and 1 murder. His daughter believes he did the same to her but there's no recordings. He's gotten maybe a few days in prison for every rape.",
+      "gold": "evidenced",
+      "predicted": "evidenced"
+    },
+    {
+      "text": "I recently heard the 911 call. I'm suspicious of her fiancee now. How did he not see the knife protruding from her chest? Why did he jump to the conclusion she stabbed herself? Why when asked what was wrong with Ellen did he go into a story about what he did before he found her up until he found her? Why did he say \"I guess I have to\" when asked to do CPR? I have so many questions.",
+      "gold": "evidenced",
+      "predicted": "evidenced"
+    },
+    {
+      "text": "Lack of training is an issue regardless of urban or rural.",
+      "gold": "speculation",
+      "predicted": "evidenced"
+    },
+    {
+      "text": "Police that commit crimes should get no parole",
+      "gold": "reaction",
+      "predicted": "evidenced"
+    },
+    {
+      "text": "This is so sad \ud83d\ude1e",
+      "gold": "reaction",
+      "predicted": "evidenced"
+    },
+    {
+      "text": "The Zamudio Law, passed after Daniel's death, made hate crimes illegal in Chile for the first time. It shows how one tragic event can create meaningful change.",
+      "gold": "evidenced",
+      "predicted": "evidenced"
+    },
+    {
+      "text": "Yuba City Five and Villisca Axe Murders",
+      "gold": "reaction",
+      "predicted": "evidenced"
+    },
+    {
+      "text": "I've never heard of this one. Horrific.",
+      "gold": "reaction",
+      "predicted": "evidenced"
+    },
+    {
+      "text": "i listed to The Daily\u2019s episode about this case. Gisele is going by her maiden name now but when she decided to go public, she also decided to use her married name (aka his last name). her kids and grandkids are so in awe of her strength and it\u2019s let them reclaim pride in their names. remarkable woman edit to add that I highly recommend that episode",
+      "gold": "evidenced",
+      "predicted": "evidenced"
+    },
+    {
+      "text": "They have a long history of it.",
+      "gold": "speculation",
+      "predicted": "evidenced"
+    },
+    {
+      "text": "Did this happen in Chile? I didn't know Neo Nazis were a thing there.",
+      "gold": "reaction",
+      "predicted": "evidenced"
+    },
+    {
+      "text": "I remember hearing about this case when I was a kid in the 2000s. So Tragic. It doesn\u2019t get too much coverage nowadays though.",
+      "gold": "reaction",
+      "predicted": "evidenced"
+    },
+    {
+      "text": "Yes, absolutely that was the main difference, I'd say. She was really nice to all kinds of different people, although in my opinion, started hanging out with jack@sses by HS. The next morning after this happened, it was a Saturday I think. I was at school for a sports related meetup, and rumors started flying around that a student had been killed the night before. I mean, it was so confusing how the info was coming in without cell phones. It was mostly spreading by word of mouth. Slowly we heard details throughout the day and we were in disbelief. Then when the Sarkissian girl also died, it was like...what is happening?? My time in HS was crazy though. It was a very large school, and with that many kids, in LA, crazy stuff is bound to happen. I think in the four years I went there, at least 5 students died, of various causes.",
+      "gold": "evidenced",
+      "predicted": "evidenced"
+    },
+    {
+      "text": "Her abrupt change in behaviour in the 8th grade reminds me of the woman who had her son treated by numerous doctors and nothing worked. She wrote an article, \"I am Adam Lanza's Mother\". He had been put on various drugs that only did not help but likely made him worse. After the article was published, a few specialists contacted her and said he was bipolar and offered to treat him. He was stabilized on the right medication. https://www.npr.org/sections/health-shots/2016/04/24/475461959/how-talking-openly-against-stigma-helped-a-mother-and-son-cope-with-bipolar-diso",
+      "gold": "evidenced",
+      "predicted": "evidenced"
+    },
+    {
+      "text": "Why did they wait until now to flag the victim\u2019s vehicle? Why didn\u2019t they do that when they first identified her?",
+      "gold": "reaction",
+      "predicted": "evidenced"
+    },
+    {
+      "text": "Heard many cases over the years different Podcasts but the case of Lauren Agee still makes my blood boil",
+      "gold": "reaction",
+      "predicted": "evidenced"
+    },
+    {
+      "text": "Gavin has THE most analyzed breakdowns on this case i have ever seen. \ud83d\udcaf percent this was a cover-up and Shapiro was involved. allegedly. \ud83d\ude44 [Gavin Fish] - (https://youtube.com/playlist?list=PLAPz1f5vj_eTOlrg_lUcT2VzT30GSR4mw&si=vbNTmh4NRKM15PSb)",
+      "gold": "evidenced",
+      "predicted": "evidenced"
+    }
+  ]
+}

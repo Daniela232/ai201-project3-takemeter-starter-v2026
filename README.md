@@ -218,6 +218,8 @@ The `speculation` label has only 7 examples in the test split. Its F1 score may 
 <!-- Milestone 1 asks you to write this BEFORE seeing the trained numbers. A
      prediction made afterwards isn't one. -->
 
+     I predict that my trained model will have higher overall accuracy than the baseline because it learned from comments labeled under my specific taxonomy. I expect the trained model to perform best on `evidenced` and `reaction`, but it may struggle with `speculation` because that label has the fewest examples.
+
 **What the gap actually means:**
 <!-- If the baseline matched your trained model, your fine-tuning added
      nothing — and that is a real finding, not a failure. Say it plainly. -->
