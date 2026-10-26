@@ -244,17 +244,17 @@ The trained model improved overall accuracy by 0.167 and macro F1 by 0.165, so f
 <!-- ⚠️ TYPED AS A MARKDOWN TABLE. The notebook prints one ready to paste.
      An image of a matrix earns nothing. -->
 
-| true \ predicted |  |  |  |
-|---|---|---|---|
-| **** |  |  |  |
-| **** |  |  |  |
-| **** |  |  |  |
+### Confusion matrix
+
+| true \ predicted | evidenced | speculation | reaction |
+|---|---:|---:|---:|
+| **evidenced** | 11 | 0 | 1 |
+| **speculation** | 4 | 0 | 3 |
+| **reaction** | 5 | 0 | 6 |
 
 **My biggest off-diagonal number, and what it means:**
-<!-- Not "the model made mistakes" — WHICH boundary it didn't learn, and which
-     direction. "7 real analysis posts were called hot_take and only 3 went the
-     other way" is a direction, not just an error rate. -->
 
+Five real `reaction` posts were predicted as `evidenced`, while only one real `evidenced` post was predicted as `reaction`. This lopsided error shows that the model leans toward `evidenced` when it is uncertain about the boundary between those two labels. The model also never predicted `speculation`, which shows that it did not learn that label’s boundary.
 
 
 ---
