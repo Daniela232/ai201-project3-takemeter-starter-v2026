@@ -107,8 +107,8 @@ This project uses public comments collected from r/TrueCrime. It trains a text c
 | Label | Count | Share |
 |---|---:|---:|
 | `evidenced` | 79 | 39.5% |
-| `reaction` | 76 | 38.0% |
-| `speculation` | 45 | 22.5% |
+| `reaction` | 71 | 35.5% |
+| `speculation` | 50 | 25.0% |
 | **Total** | **200** | **100%** |
 
 **Three hard cases**
@@ -194,6 +194,12 @@ The `speculation` label has only 7 examples in the test split. Its F1 score may 
 - *What I changed:* I installed compatible versions of NumPy 1.26.4, pandas 2.2.3, and pyarrow 17.0.0 inside the project’s virtual environment. I did not change the notebook’s training code or hyperparameters.
 
 **Pre-labelling disclosure:** An AI tool pre-labeled 180 of the 200 comments. I personally reviewed every AI-labeled row against my written taxonomy before marking it `reviewed`. The first 20 comments were labeled cold without AI assistance.
+
+**Moment 3**
+
+- *What I asked for:* I asked the AI to help interpret the three-seed results, confusion matrix, and agreement report and identify one controlled improvement.
+- *What came back:* It suggested reviewing the boundary between `reaction` and `speculation` and identified five comments that made unsupported claims rather than purely emotional responses.
+- *What I changed:* I personally reviewed those five comments against my taxonomy, changed their labels from `reaction` to `speculation`, and reran the three-seed experiment. I reported that the change did not improve performance consistently.
 
 <!-- ═══════════════════════ UNIT 6 — THE TEST ═══════════════════════
 
@@ -366,23 +372,28 @@ Most of my disagreements involved the boundary between `analysis` and `hot_take`
 
 **What I changed:**
 
+I reviewed the boundary between reaction and speculation and relabeled five comments from reaction to speculation. Each comment made an unsupported general, legal, or policy claim rather than expressing only an emotion. This changed the dataset counts from 79 evidenced, 76 reaction, and 45 speculation examples to 79 evidenced, 71 reaction, and 50 speculation examples. I kept the model and training settings unchanged so that the label correction was the only experimental change.
+
 **Which diagnosis pointed at it:**
+
+Before the improvement, speculation had an F1 of 0.000 under all three seeds, and the model never predicted that label. My labeling review also showed that I sometimes applied boundaries inconsistently when separating unsupported claims from other posts. These findings suggested that some unsupported claims had been incorrectly included under reaction, weakening the model’s understanding of speculation.
 
 ### Run Log — After
 
 | Criterion | Target | Seed 42 | Seed 7 | Seed 2024 | Verdict |
-|---|---|---|---|---|---|
-| 1.  |  |  |  |  |  |
-| 2.  |  |  |  |  |  |
-| 3.  |  |  |  |  |  |
-| 4.  |  |  |  |  |  |
-| 5.  |  |  |  |  |  |
+|---|---|---:|---:|---:|---|
+| 1. Overall accuracy | At least 0.65 | 0.500 | 0.467 | 0.667 | MISSED |
+| 2. Every label F1 | At least 0.55 | Minimum: 0.000 | Minimum: 0.000 | Minimum: 0.000 | MISSED |
+| 3. Largest label share | No more than 60% | 39.5% | 39.5% | 39.5% | MET |
+| 4. Staff agreement | At least 70% | 76.7% | 76.7% | 76.7% | MET |
+| 5. Most-confident third accuracy | At least 80% | 90% | 90% | 90% | MET |
 
 **Did it help, and how do I know:**
 
 <!-- If it didn't, say so. Relabelling that didn't help is a genuinely
      interesting result and earns full credit. -->
 
+The improvement did not help consistently. Mean accuracy decreased from approximately 0.567 before the change to 0.544 afterward, while mean macro F1 decreased from approximately 0.424 to 0.391. The speculation F1 remained 0.000 under all three seeds because the model still never predicted that label. Seed 2024 improved from 0.633 to 0.667 accuracy, and its reaction F1 increased to 0.800, but the other two seeds became worse. The accuracy spread also increased from 0.133 to 0.200, indicating greater instability. Relabeling only five examples was therefore not enough to teach the model the speculation boundary.
 
 
 ---
@@ -391,13 +402,18 @@ Most of my disagreements involved the boundary between `analysis` and `hot_take`
 
 <!-- For each criterion still missed: what you'd do, and why you stopped. -->
 
+Criteria 1 and 2 are still missed. Overall accuracy passed 0.65 only under seed 2024, while the other two seeds remained below the target. To improve this, I would collect more carefully reviewed examples, especially posts near the boundaries among all three labels, and then test each additional change separately.
+
+The most serious remaining problem is that speculation still has an F1 of 0.000 under every seed. I would collect more varied speculation examples, review the entire dataset for unsupported claims incorrectly placed in another label, and clarify the taxonomy with more boundary examples. After improving the data, I would test class weighting or balanced sampling as a separate experiment.
+
+I stopped after this attempt because the assignment calls for one controlled improvement. Making additional data and training changes simultaneously would make it difficult to determine which change caused the result, and each three-seed CPU run also requires substantial time.
 
 
 **The gap between what I meant my labels to capture and what the model
 learned:**
 <!-- Two sentences. Your confusion matrix is the evidence. -->
 
-
+I intended speculation to represent confident unsupported claims, but the model learned mainly to choose between factual-looking evidenced posts and emotional reaction posts. In the after-change seed 42 confusion matrix, all seven real speculation posts were still misclassified—six as evidenced and one as reaction—so the model never learned the unsupported-claim boundary.
 
 <!-- ═════════════════════════════════════════════════════════════════════
 
