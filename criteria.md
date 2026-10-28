@@ -87,6 +87,9 @@ I agree with the staff labels on at least 70% (14 of 20) of the cold-labeled pos
 
 **Why this target:** The hardest boundary in my taxonomy is `evidenced` vs. `reaction`, since a comment can carry both a fact and a feeling at once. I expect real disagreement with staff on exactly that boundary, so 70% is clearly better than chance (33%) without pretending my boundary is cleaner than it actually is.
 
+> **Revised in unit 6:** I agree with the staff labels on at least 70% (21 of 30) of the official staff-set posts.
+>
+> **Why revised:** The official agreement exercise contained 30 posts, not 20 cold-labeled posts. My original sample size could not be measured using the provided staff set, so I kept the same 70% target and changed only the denominator.
 
 
 ---
@@ -97,6 +100,9 @@ Predictions where the model's confidence is above 0.8 are correct at least 80% o
 
 **Why this target:** If the model's confident predictions aren't noticeably more accurate than its overall average (0.65), the confidence scores would be meaningless noise rather than something a user could actually trust.
 
+> **Revised in unit 6:** The model’s most-confident third of predictions is at least 80% accurate on each of the three seeds.
+>
+> **Why revised:** The notebook records accuracy for the most-confident third and least-confident third, but it does not save the predictions above a fixed 0.8 confidence threshold. The revision preserves my original goal of testing whether confident predictions are trustworthy while using the measurement produced by the notebook.
 
 
 ---

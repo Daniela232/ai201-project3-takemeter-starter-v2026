@@ -228,21 +228,15 @@ The trained model improved overall accuracy by 0.167 and macro F1 by 0.165, so f
 
 ## Run Log — Before
 
-<!-- Five criteria across three seeds. The notebook's section 6 prints the
-     spread table; the Target and Verdict columns are yours. -->
-
 | Criterion | Target | Seed 42 | Seed 7 | Seed 2024 | Verdict |
-|---|---|---|---|---|---|
-| 1.  |  |  |  |  |  |
-| 2.  |  |  |  |  |  |
-| 3.  |  |  |  |  |  |
-| 4.  |  |  |  |  |  |
-| 5.  |  |  |  |  |  |
+|---|---|---:|---:|---:|---|
+| 1. Overall accuracy | At least 0.65 | 0.567 | 0.500 | 0.633 | MISSED |
+| 2. Every label F1 | At least 0.55 | Minimum: 0.000 | Minimum: 0.000 | Minimum: 0.000 | MISSED |
+| 3. Largest label share | No more than 60% | 39.5% | 39.5% | 39.5% | MET |
+| 4. Staff agreement | At least 70% | 76.7% | 76.7% | 76.7% | MET |
+| 5. Most-confident third accuracy | At least 80% | 90% | 90% | 90% | MET |
 
-### Confusion matrix
-
-<!-- ⚠️ TYPED AS A MARKDOWN TABLE. The notebook prints one ready to paste.
-     An image of a matrix earns nothing. -->
+Criteria 3 and 4 are dataset-level measurements, so their values do not change between training seeds. The accuracy ranged from 0.500 to 0.633, a spread of 0.133. Because the spread is greater than 0.10, the model’s performance is not stable across different data splits.
 
 ### Confusion matrix
 
@@ -256,32 +250,25 @@ The trained model improved overall accuracy by 0.167 and macro F1 by 0.165, so f
 
 Five real `reaction` posts were predicted as `evidenced`, while only one real `evidenced` post was predicted as `reaction`. This lopsided error shows that the model leans toward `evidenced` when it is uncertain about the boundary between those two labels. The model also never predicted `speculation`, which shows that it did not learn that label’s boundary.
 
-
 ---
 
-## Verdicts and Diagnoses
-
-<!-- MET or MISSED against LAST UNIT's target. The target has to hold across
-     all three seeds, not turn up sometimes. -->
+** Verdicts and Diagnoses**
 
 | # | Criterion | Target | Verdict | How I decided |
 |---|---|---|---|---|
-| 1 |  |  |  |  |
-| 2 |  |  |  |  |
-| 3 |  |  |  |  |
-| 4 |  |  |  |  |
-| 5 |  |  |  |  |
+| 1 | Overall accuracy | At least 0.65 on every seed | MISSED | The three accuracies were 0.567, 0.500, and 0.633. None reached 0.65. |
+| 2 | Every label F1 | At least 0.55 on every seed | MISSED | `speculation` had an F1 of 0.000 on all three seeds. `reaction` also fell to 0.526 on seed 7. |
+| 3 | Largest label share | No label above 60% | MET | The largest label was `evidenced` with 79 of 200 examples, or 39.5%. |
+| 4 | Staff agreement | At least 70% of the 30 official posts | MET | I agreed with staff on 23 of 30 posts, or 76.7%. |
+| 5 | Most-confident third accuracy | At least 80% on every seed | MET | The most-confident third was 90% accurate on all three seeds. |
 
 **Diagnoses**
 
-<!-- For each miss: the cause, and how you know. The four common causes are:
-     too few examples for a label, a boundary you applied inconsistently, a
-     genuinely hard label pair, and a task the model can't reach from this
-     much data.
+**Criterion 1, overall accuracy:** The model missed the 0.65 accuracy target on every seed. Accuracy changed from 0.500 to 0.633, a spread of 0.133, showing that results are unstable across data splits. The dataset has only 200 examples, and `speculation` has only 45 total examples and 7 examples in each test split. The small dataset and weak performance on the smallest label pulled down overall accuracy.
 
-     ⚠️ Use your agreement report as evidence. It is the only instrument you
-     have that can tell a LABELLING problem from a MODEL problem, and this
-     section is graded on whether you used it that way. -->
+**Criterion 2, every label F1:** The clearest problem is `speculation`, which had an F1 of 0.000 on all three seeds. In the seed 42 confusion matrix, all seven real `speculation` posts were misclassified: four as `evidenced` and three as `reaction`. The model never predicted `speculation` at all. My agreement report also showed that I inconsistently decided when a fact truly supported an argument and when a post was only an unsupported claim. This suggests that the problem is both too few `speculation` examples and an inconsistently applied boundary, not only random model error.
+
+---
 
 
 
@@ -295,49 +282,83 @@ Five real `reaction` posts were predicted as `evidenced`, while only one real `e
      data/staff_taxonomy.md, not your own — so every argument below is made
      from those definitions and those decision rules. -->
 
-**Agreement rate:** ___ / 30 = ___%
-
-<!-- Nobody grades this number. A 60% who argues every disagreement from the
-     stated rules beats a 95% who wrote "staff was right" nine times. Several
-     of the 30 were chosen because they're genuinely ambiguous — you should be
-     winning some of these. -->
+**Agreement rate:** 23 / 30 = 76.7%
 
 **Disagreements**
 
-<!-- Three lines each: the post, both labels, and who you think is right and
-     why — grounded in the staff definitions you were both applying.
-
-     Then sort each into one of three piles:
-       (a) the rule covered it and I applied it loosely → a consistency problem
-       (b) the rule genuinely doesn't say               → a gap in the definitions
-       (c) the rule is ambiguous here and my reading is defensible → argue it.
-           This is a legitimate win.
-
-     Pile (a) is the one that matters most for your diagnosis: if you applied a
-     written rule two different ways on 30 posts, that is direct evidence about
-     what you did across your own 200. -->
-
 **1.**
-> *The post:*
+
+> *The post:* Everyone blames the hill at 18 miles. I split the field into people who ran the first half under 1:45 and over, and the slowdown after 18 was almost identical for both groups. If the hill were the problem the fast starters would fall apart harder.
 >
-> *Staff said / I said:*
+> *Staff said / I said:* Staff said `analysis`; I said `hot_take`.
 >
-> *My call, and why:*
+> *My call, and why:* Staff has the stronger label. The writer compares two groups and uses their nearly identical slowdown to argue that the hill was not the main cause. The comparison directly supports the conclusion, so the facts are load-bearing.
 >
-> *Which pile:*
+> *Which pile:* (a) The rule covered it, but I applied it too loosely.
 
 **2.**
-> *The post:*
+
+> *The post:* Ran the same loop in 4C and in 24C within a fortnight, same effort by heart rate. 90 seconds slower in the heat over six miles. People keep saying heat costs you “a bit” and it’s more than that.
 >
-> *Staff said / I said:*
+> *Staff said / I said:* Staff said `analysis`; I said `hot_take`.
 >
-> *My call, and why:*
+> *My call, and why:* Staff has the stronger label. The writer compares the same route and effort under two temperatures and uses the 90-second difference to support the claim that heat has a meaningful effect.
 >
-> *Which pile:*
+> *Which pile:* (a) The rule covered it, but I applied it too loosely.
+
+**3.**
+
+> *The post:* Went back through the club results going back to 2012. Every single year the number of people who enter the spring marathon and don’t start it sits between 18 and 23 percent. It’s not a bad-luck year, it’s the base rate.
+>
+> *Staff said / I said:* Staff said `analysis`; I said `hot_take`.
+>
+> *My call, and why:* Staff has the stronger label. The results from 2012 onward and the repeated range of 18 to 23 percent directly support the conclusion that the current year is not an unusual one-time event.
+>
+> *Which pile:* (a) The rule covered it, but I applied it too loosely.
+
+**4.**
+
+> *The post:* Heart rate zones are astrology for runners.
+>
+> *Staff said / I said:* Staff said `hot_take`; I said `reaction`.
+>
+> *My call, and why:* Staff has the stronger label. This is a general unsupported claim about heart rate zones. It does not describe something that just happened to the writer or the writer’s immediate feelings.
+>
+> *Which pile:* (a) The rule covered it, but I applied it too loosely.
+
+**5.**
+
+> *The post:* Times are down about 3% since the shoe rules changed, so obviously the shoes are the whole story and the sport has a problem.
+>
+> *Staff said / I said:* Staff said `hot_take`; I said `analysis`.
+>
+> *My call, and why:* Staff’s label is stronger because the writer jumps from a 3 percent change to saying that shoes are the entire cause. The word “obviously” replaces the missing reasoning. However, my original label is defensible because the percentage and timing of the rule change could be read as evidence supporting the claim, even though the conclusion is too strong.
+>
+> *Which pile:* (c) The example is genuinely ambiguous, and my reading is defensible, although the staff interpretation follows Rule 1 more closely.
+
+**6.**
+
+> *The post:* Road racing peaked in about 2015 and everything since has been marketing.
+>
+> *Staff said / I said:* Staff said `hot_take`; I said `analysis`.
+>
+> *My call, and why:* Staff has the stronger label. The year 2015 is part of the unsupported assertion, but the writer provides no results, comparisons, or other evidence showing that racing peaked then.
+>
+> *Which pile:* (a) The rule covered it, but I applied it too loosely.
+
+**7.**
+
+> *The post:* First run back after eight weeks out. Two miles, slower than my warm-up used to be, and I don’t care even slightly.
+>
+> *Staff said / I said:* Staff said `reaction`; I said `analysis`.
+>
+> *My call, and why:* Staff has the stronger label. The post reports something that just happened to the writer and describes the writer’s personal response. The numbers provide context, but they are not used to make a broader argument.
+>
+> *Which pile:* (a) The rule covered it, but I applied it too loosely.
 
 **What the pattern in my disagreements tells me:**
 
-
+Most of my disagreements involved the boundary between `analysis` and `hot_take`. I sometimes overlooked facts that directly supported an argument, while other times I treated a number or named year as evidence even when it did not support the conclusion. I also confused a general unsupported claim with a personal reaction once. This shows that I applied the written boundaries inconsistently, especially when deciding whether a fact was actually load-bearing.
 
 ---
 
